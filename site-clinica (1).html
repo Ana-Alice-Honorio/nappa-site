@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NAPPA — Núcleo de Atendimento e Pesquisa em Psicologia | Indaiatuba</title>
+<meta name="description" content="Núcleo de Atendimento e Pesquisa em Psicologia, em Indaiatuba/SP. Psicoterapia individual, de casal, infantil e avaliação psicológica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..500&family=Karla:ital,wght@0,300..700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F7F2EC;
+  --surface:#FBF8F3;
+  --ink:#12392A;
+  --ink-soft:#5C6E62;
+  --pine:#12392A;
+  --brass:#B8862E;
+  --sky:#2F6FA8;
+  --sage:#C3CFAE;
+  --line:#DED5C4;
+  --shadow:0 1px 0 rgba(18,57,42,.06);
+}
+:root:not([data-theme="light"]){
+  @media (prefers-color-scheme: dark){
+    --bg:#0F1712;
+    --surface:#16211A;
+    --ink:#E9EFE7;
+    --ink-soft:#9FB0A4;
+    --pine:#9CC6AB;
+    --brass:#D9AC5C;
+    --sky:#7FAEDA;
+    --sage:#42533E;
+    --line:#28352A;
+    --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1712;
+  --surface:#16211A;
+  --ink:#E9EFE7;
+  --ink-soft:#9FB0A4;
+  --pine:#9CC6AB;
+  --brass:#D9AC5C;
+  --sky:#7FAEDA;
+  --sage:#42533E;
+  --line:#28352A;
+  --shadow:none;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Karla","Helvetica Neue",Arial,sans-serif;
+  font-size:1.0625rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}
+h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:400;line-height:1.15;margin:0}
+p{margin:0 0 1rem}
+a{color:inherit}
+img{max-width:100%}
+
+.wrap{max-width:1040px;margin:0 auto;padding:0 clamp(1.25rem,5vw,3rem)}
+
+/* --- barra de navegação --- */
+.topbar{
+  position:sticky;top:0;z-index:20;
+  background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:68px;flex-wrap:wrap}
+.brand{font-family:"Fraunces",Georgia,serif;font-size:1.02rem;line-height:1.25;letter-spacing:.01em;text-decoration:none;max-width:22ch}
+.brand span{color:var(--brass)}
+.nav{display:flex;gap:1.35rem;flex-wrap:wrap}
+.nav a{font-size:.95rem;text-decoration:none;color:var(--ink-soft);padding:.25rem 0;border-bottom:1px solid transparent}
+.nav a:hover,.nav a:focus-visible{color:var(--ink);border-bottom-color:var(--brass)}
+
+/* --- fio condutor --- */
+.thread{position:relative}
+.thread::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--line);
+}
+.block{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(150px,200px) 1fr;
+  gap:clamp(1.5rem,5vw,3.5rem);
+  padding:clamp(3rem,7vw,5.5rem) 0 clamp(3rem,7vw,5.5rem) clamp(1.5rem,4vw,2.5rem);
+  border-top:1px solid var(--line);
+}
+.block::before{
+  content:"";position:absolute;left:-4.5px;top:-4.5px;width:9px;height:9px;border-radius:50%;
+  background:var(--brass);
+}
+.block > .rail{font-family:"Fraunces",Georgia,serif;font-style:italic;font-size:1.05rem;color:var(--brass);padding-top:.15rem}
+.block > .rail small{display:block;font-family:"Karla",sans-serif;font-style:normal;font-size:.9rem;color:var(--ink-soft);margin-top:.35rem;line-height:1.45}
+@media (max-width:760px){
+  .block{grid-template-columns:1fr;gap:1.25rem}
+}
+
+.prose{max-width:62ch}
+h2{font-size:clamp(1.6rem,3.6vw,2.15rem);margin-bottom:1rem}
+h3{font-size:1.15rem;margin-bottom:.35rem}
+
+/* --- hero --- */
+.hero{padding:clamp(2.5rem,7vw,5rem) 0 clamp(2.5rem,7vw,4.5rem)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.5rem,5vw,3rem);align-items:end}
+.hero-figure{
+  justify-self:end;
+  width:clamp(190px,24vw,260px);
+}
+.hero-figure img{
+  width:100%;height:auto;display:block;
+  -webkit-mask-image:radial-gradient(ellipse 66% 50% at 46% 50%,#000 75%,transparent 100%);
+  mask-image:radial-gradient(ellipse 66% 50% at 46% 50%,#000 75%,transparent 100%);
+  filter:none;
+}
+@media (max-width:760px){
+  .hero-grid{grid-template-columns:1fr;align-items:center}
+  .hero-figure{justify-self:center;width:min(52vw,185px);order:-1}
+}
+.hero h1{
+  font-size:clamp(2.2rem,6.4vw,3.7rem);
+  font-weight:300;
+  letter-spacing:-.015em;
+  max-width:17ch;
+}
+.hero h1 em{font-style:italic;color:var(--pine)}
+.hero p.lead{
+  margin-top:1.5rem;max-width:56ch;font-size:clamp(1.05rem,2.2vw,1.2rem);color:var(--ink-soft);
+}
+.hero .place{
+  font-size:.95rem;color:var(--ink-soft);margin-bottom:1.75rem;
+  padding-left:2.4rem;position:relative;
+}
+.hero .place::before{content:"";position:absolute;left:0;top:.7em;width:1.8rem;height:1px;background:var(--brass)}
+.actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2rem}
+.btn{
+  display:inline-block;padding:.8rem 1.5rem;border-radius:999px;text-decoration:none;
+  font-size:.98rem;border:1px solid var(--pine);
+}
+.btn-solid{background:var(--pine);color:var(--bg)}
+.btn-solid:hover,.btn-solid:focus-visible{background:var(--ink)}
+.btn-ghost{color:var(--ink);border-color:var(--line)}
+.btn-ghost:hover,.btn-ghost:focus-visible{border-color:var(--pine)}
+
+/* --- listas de conteúdo --- */
+.pillars{display:grid;gap:2rem}
+.pillars div h3{font-family:"Fraunces",Georgia,serif;color:var(--pine)}
+.pillars p{color:var(--ink-soft);max-width:58ch;margin:0}
+.values{list-style:none;margin:.5rem 0 0;padding:0;display:grid;gap:.6rem}
+.values li{padding-left:1.4rem;position:relative;color:var(--ink-soft)}
+.values li::before{content:"";position:absolute;left:0;top:.72em;width:.5rem;height:1px;background:var(--brass)}
+.values strong{color:var(--ink);font-weight:600}
+
+.group-title{
+  font-family:"Karla",sans-serif;font-size:.85rem;font-weight:700;text-transform:none;
+  color:var(--pine);background:var(--sage);display:inline-block;
+  padding:.35rem .75rem;border-radius:999px;margin:1.75rem 0 .25rem;
+}
+.group-title:first-of-type{margin-top:0}
+.services{display:grid;gap:0;margin:0;padding:0;list-style:none}
+.services li{padding:1.4rem 0;border-bottom:1px solid var(--line)}
+.services li:first-child{padding-top:0}
+.services li:last-child{border-bottom:0;padding-bottom:0}
+.services h3{font-family:"Karla",sans-serif;font-size:1.05rem;font-weight:600}
+.services p{color:var(--ink-soft);margin:0;max-width:60ch;font-size:.99rem}
+
+/* --- materiais --- */
+.materials{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.25rem}
+.material{
+  background:var(--surface);border:1px solid var(--line);border-radius:4px;
+  padding:1.35rem;display:flex;flex-direction:column;box-shadow:var(--shadow);
+}
+.material .kind{font-size:.82rem;color:var(--brass);margin-bottom:.5rem}
+.material h3{font-family:"Fraunces",Georgia,serif;font-size:1.15rem;margin-bottom:.5rem}
+.material p{color:var(--ink-soft);font-size:.95rem;flex:1}
+.material .buy{
+  margin-top:.75rem;display:flex;align-items:baseline;justify-content:space-between;gap:.75rem;flex-wrap:wrap;
+}
+.material .price{font-size:1rem;font-weight:600}
+.material .buy a{font-size:.95rem;color:var(--pine);text-decoration:none;border-bottom:1px solid var(--brass);padding-bottom:1px}
+.material .buy a:hover,.material .buy a:focus-visible{color:var(--ink)}
+
+/* --- equipe --- */
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}
+.person{display:grid;grid-template-columns:64px 1fr;gap:1rem;align-items:start;min-width:0}
+.avatar{
+  width:64px;height:64px;border-radius:50%;background:var(--surface);
+  border:1px solid var(--line);display:grid;place-items:center;
+  font-family:"Fraunces",Georgia,serif;font-size:1.25rem;color:var(--pine);
+}
+.person h3{font-family:"Karla",sans-serif;font-size:1.02rem;font-weight:600}
+.person .crp{font-size:.88rem;color:var(--brass);margin-bottom:.45rem}
+.person p{font-size:.95rem;color:var(--ink-soft);margin:0}
+
+/* --- contato --- */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem}
+.contact h3{font-family:"Karla",sans-serif;font-size:.98rem;font-weight:600;margin-bottom:.4rem}
+.contact p,.contact address{font-style:normal;color:var(--ink-soft);margin:0 0 .4rem;font-size:.99rem}
+.contact a{color:var(--pine);text-decoration:none;border-bottom:1px solid var(--line)}
+.contact a:hover,.contact a:focus-visible{border-bottom-color:var(--brass)}
+
+footer{border-top:1px solid var(--line);padding:2.5rem 0 3.5rem;color:var(--ink-soft);font-size:.9rem}
+footer p{margin:0 0 .35rem}
+
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:2px}
+
+@media (max-width:760px){
+  .wrap{padding-left:1rem;padding-right:1rem}
+  .topbar .wrap{padding-top:.65rem;padding-bottom:.65rem}
+  .brand{font-size:.96rem}
+  .nav{width:100%;gap:.65rem .95rem;overflow-x:auto;flex-wrap:nowrap;padding-bottom:.15rem}
+  .nav a{font-size:.88rem;white-space:nowrap}
+  .hero{padding-top:2rem;padding-bottom:2.5rem}
+  .hero-grid{gap:1.25rem}
+  .hero-figure{max-width:170px;margin-bottom:.35rem}
+  .hero h1{font-size:clamp(2rem,10vw,2.75rem);max-width:20ch}
+  .hero p.lead{font-size:1rem}
+  .actions{display:grid;grid-template-columns:1fr;gap:.65rem}
+  .btn{text-align:center;padding:.75rem 1rem}
+  .thread{padding-left:1rem;padding-right:1rem}
+  .thread::before{display:none}
+  .block{margin:1rem 0;padding:1.35rem;gap:1.25rem;border:1px solid var(--line);border-radius:8px;background:var(--surface);box-shadow:var(--shadow)}
+  .block::before{display:none}
+  .block > .rail{font-size:1rem}
+  .block > .rail small{font-size:.82rem}
+  .pillars{gap:1.4rem}
+  .group-title{margin-top:1.4rem}
+  .materials{grid-template-columns:1fr}
+  .material{padding:1.1rem}
+  .team{grid-template-columns:1fr;gap:.75rem}
+  .person{grid-template-columns:48px 1fr;gap:.75rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
+  .person:last-child{border-bottom:0;padding-bottom:0}
+  .avatar{width:48px;height:48px;font-size:1.05rem}
+  .person h3{font-size:1rem;line-height:1.25}
+  .person p{font-size:.92rem;line-height:1.45}
+  .contact{grid-template-columns:1fr;gap:1.25rem}
+  footer{padding-top:2rem}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#inicio">Núcleo de Atendimento<br>e Pesquisa em <span>Psicologia</span></a>
+    <nav class="nav" aria-label="Seções do site">
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#materiais">Materiais</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#contato">Contato</a>
+      <a href="https://instagram.com/nappa.psi" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap" id="inicio">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <p class="place">Psicologia em Indaiatuba — presencial e online</p>
+        <h1>Um lugar para <em>pensar em voz alta</em> e ser escutado com cuidado.</h1>
+        <p class="lead">Cuidado em saúde mental e formação profissional em Psicologia, unindo a comunidade a um atendimento ético e humanizado.</p>
+        <div class="actions">
+          <a class="btn btn-solid" href="#contato">Agendar um horário</a>
+          <a class="btn btn-ghost" href="#servicos">Ver os serviços</a>
+        </div>
+      </div>
+      <div class="hero-figure">
+        <img src="assets/avatar.png" alt="Ilustração de uma pessoa em pé" width="260" height="260">
+    </div>
+  </section>
+
+  <div class="wrap thread">
+
+    <section class="block" id="sobre">
+      <div class="rail">Quem somos<small>Missão, visão e valores que orientam o trabalho do núcleo.</small></div>
+      <div>
+        <h2>O que sustenta o nosso trabalho</h2>
+        <div class="pillars">
+          <div>
+            <h3>Missão</h3>
+            <p>Promover a saúde mental por meio de um cuidado psicológico ético e humanizado, ampliando o acesso da comunidade à assistência de qualidade e impulsionando a formação contínua de profissionais da Psicologia.</p>
+          </div>
+          <div>
+            <h3>Visão</h3>
+            <p>Ser um núcleo de referência em saúde mental e formação profissional, reconhecido pelo impacto social e por um modelo de cuidado sustentável, inclusivo e replicável.</p>
+          </div>
+          <div>
+            <h3>Nossos valores</h3>
+            <ul class="values">
+              <li><strong>Dignidade humana e acolhimento.</strong></li>
+              <li><strong>Excelência técnica e científica.</strong></li>
+              <li><strong>Acesso e inclusão.</strong></li>
+              <li><strong>Impacto social.</strong></li>
+              <li><strong>Inovação sustentável.</strong></li>
+            </ul>
+            <p style="margin-top:1rem;font-style:italic;color:var(--ink-soft)">Ética, acolhimento e conhecimento caminhando juntos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="servicos">
+      <div class="rail">Serviços<small>Duas frentes que se complementam: cuidado clínico e formação profissional.</small></div>
+      <div>
+        <h2>Nossos serviços</h2>
+
+        <h3 class="group-title">Cuidado em saúde mental</h3>
+        <ul class="services">
+          <li>
+            <h3>Atendimento psicológico / psicoterapêutico</h3>
+            <p>Cuidado psicológico individualizado para diferentes públicos e demandas.</p>
+          </li>
+          <li>
+            <h3>Atendimento psiquiátrico</h3>
+            <p>Acompanhamento especializado em saúde mental, com acolhimento e responsabilidade.</p>
+          </li>
+          <li>
+            <h3>Avaliação neuropsicológica</h3>
+            <p>Investigação das funções cognitivas, aspectos emocionais e comportamentais para um olhar completo e integrado.</p>
+          </li>
+        </ul>
+
+        <h3 class="group-title">Formação e desenvolvimento profissional</h3>
+        <ul class="services">
+          <li>
+            <h3>Formação profissional</h3>
+            <p>Cursos, trilhas de formação e capacitações para estudantes e profissionais da Psicologia.</p>
+          </li>
+          <li>
+            <h3>Supervisão profissional</h3>
+            <p>Acompanhamento técnico e ético para psicólogos e profissionais em formação.</p>
+          </li>
+          <li>
+            <h3>Sublocação de salas</h3>
+            <p>Espaços estruturados para profissionais da saúde mental atenderem com mais conforto e profissionalismo.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" id="materiais">
+      <div class="rail">Materiais<small>Publicações e recursos produzidos pela equipe, com link para compra.</small></div>
+      <div>
+        <h2>Materiais produzidos</h2>
+        <p class="prose">Conteúdos desenvolvidos a partir da prática clínica, para pacientes, famílias e outros profissionais.</p>
+        <div class="materials">
+          <article class="material">
+            <div class="kind">Material online</div>
+            <h3>Material do NAPPA</h3>
+            <p>Conheça o material produzido pelo núcleo e acesse a página de compra.</p>
+            <div class="buy">
+              <span class="price">Acesso online</span>
+              <a href="https://pay.hotmart.com/P107053131W?off=rbd9m0qq&amp;checkoutMode=0&amp;bid=1789019067160&amp;utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio&amp;fbclid=PAb21jcAUPIwxwZG9mAmV4dG4DYWVtAjExAHNydGMGYXBwX2lkDzU2NzA2NzM0MzM1MjQyNwABp3Nz4XuPc_6o8SZ84dPJJkQ6oj5VtExWkmAL7WY2cy9hUAu92CzCBck1L00V_aem_UmQHhnS3bFtwu_ZgCmQHYg" target="_blank" rel="noopener">Acessar material</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="equipe">
+      <div class="rail">Equipe<small>Quem atende na clínica e as áreas de cada profissional.</small></div>
+      <div>
+        <h2>Profissionais da clínica</h2>
+        <div class="team">
+          <div class="person">
+            <div class="avatar" aria-hidden="true">C</div>
+            <div>
+              <h3>Cassandra Pinhatelli</h3>
+              <div class="crp">Psicóloga · CRP 06/64461</div>
+              <p>Abordagem comportamental.</p>
+            </div>
+          </div>
+          <div class="person">
+            <div class="avatar" aria-hidden="true">C</div>
+            <div>
+              <h3>Cristiane Hervas</h3>
+              <div class="crp">Psicóloga · CRP 06/236340</div>
+              <p>Abordagem psicanalítica.</p>
+            </div>
+          </div>
+          <div class="person">
+            <div class="avatar" aria-hidden="true">J</div>
+            <div>
+              <h3>Juliana Barcellos</h3>
+              <div class="crp">Psicóloga · CRP 06/236415</div>
+              <p>Abordagem psicanalítica.</p>
+            </div>
+          </div>
+          <div class="person">
+            <div class="avatar" aria-hidden="true">K</div>
+            <div>
+              <h3>Kelliane Oliveira</h3>
+              <div class="crp">Psicóloga · CRP 06/154438</div>
+              <p>Abordagem psicanalítica.</p>
+            </div>
+          </div>
+          <div class="person">
+            <div class="avatar" aria-hidden="true">R</div>
+            <div>
+              <h3>Raissa Santos</h3>
+              <div class="crp">Psicóloga · CRP 06/201495</div>
+              <p>Terapia cognitivo-comportamental (TCC).</p>
+            </div>
+          </div>
+          <div class="person">
+            <div class="avatar" aria-hidden="true">R</div>
+            <div>
+              <h3>Renata Rebaldoni</h3>
+              <div class="crp">Psicóloga · CRP 06/118444</div>
+              <p>Abordagem fenomenológica.</p>
+            </div>
+          </div>
+          <div class="person">
+            <div class="avatar" aria-hidden="true">V</div>
+            <div>
+              <h3>Vanusa Nakasone</h3>
+              <div class="crp">Psicóloga · CRP 06/233056</div>
+              <p>Terapia cognitivo-comportamental (TCC).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="contato">
+      <div class="rail">Contato<small>Onde estamos, horários e como marcar uma primeira conversa.</small></div>
+      <div>
+        <h2>Venha conversar</h2>
+        <div class="contact">
+          <div>
+            <h3>Endereço</h3>
+            <address>
+              Rua Ademar de Barros, 1313 — Centro<br>
+              Indaiatuba — SP, 13330-130
+            </address>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Ademar+de+Barros+1313+Centro+Indaiatuba+SP+13330-130" target="_blank" rel="noopener">Ver no mapa</a></p>
+          </div>
+          <div>
+            <h3>Telefone e redes</h3>
+            <p><a href="tel:+5519989736456">(19) 98973-6456</a></p>
+            <p><a href="https://wa.me/5519989736456" target="_blank" rel="noopener">Falar no WhatsApp</a></p>
+            <p><a href="https://instagram.com/nappa.psi" target="_blank" rel="noopener">@nappa.psi</a></p>
+          </div>
+          <div>
+            <h3>Horários</h3>
+            <p>Segunda a sexta, das [00h] às [00h]</p>
+            <p>Sábados com horário marcado</p>
+          </div>
+        </div>
+        <p class="prose" style="margin-top:2rem">Se você está passando por uma emergência, ligue para o CVV no <a href="tel:188" style="color:var(--pine)">188</a> (24 horas) ou procure o serviço de saúde mais próximo.</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>NAPPA — unindo a comunidade à saúde mental.</p>
+    <p>Núcleo de Atendimento e Pesquisa em Psicologia — Rua Ademar de Barros, 1313, Centro, Indaiatuba/SP — (19) 98973-6456</p>
+    <p>Atendimentos realizados por psicólogas e psicólogos inscritos no Conselho Regional de Psicologia.</p>
+  </div>
+</footer>
+
+</body>
+</html>
