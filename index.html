@@ -193,11 +193,23 @@ h3{font-size:1.15rem;margin-bottom:.35rem}
 
 /* --- equipe --- */
 .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}
+.team-group + .team-group{margin-top:2.5rem}
+.team-group-title{font-family:"Fraunces",Georgia,serif;font-size:1.35rem;color:var(--pine);margin:0 0 1.25rem}
 .person{display:grid;grid-template-columns:64px 1fr;gap:1rem;align-items:start;min-width:0}
-.avatar{
-  width:64px;height:64px;border-radius:50%;background:var(--surface);
-  border:1px solid var(--line);display:grid;place-items:center;
-  font-family:"Fraunces",Georgia,serif;font-size:1.25rem;color:var(--pine);
+.avatar {
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  overflow:hidden;
+  border:1px solid var(--line);
+  background:var(--surface);
+}
+
+.avatar img {
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
 }
 .person h3{font-family:"Karla",sans-serif;font-size:1.02rem;font-weight:600}
 .person .crp{font-size:.88rem;color:var(--brass);margin-bottom:.45rem}
@@ -382,62 +394,98 @@ footer p{margin:0 0 .35rem}
       <div class="rail">Equipe<small>Quem atende na clínica e as áreas de cada profissional.</small></div>
       <div>
         <h2>Profissionais da clínica</h2>
-        <div class="team">
+        <div class="team-group">
+          <h3 class="team-group-title">Psicólogas</h3>
+          <div class="team">
           <div class="person">
-            <div class="avatar" aria-hidden="true">C</div>
+            <div class="avatar">
+            <img src="assets/fotos/Christiane.jpg" alt="Foto de Cristiane Hervas"></div>
             <div>
-              <h3>Cassandra Pinhatelli</h3>
-              <div class="crp">Psicóloga · CRP 06/64461</div>
-              <p>Abordagem comportamental.</p>
-            </div>
-          </div>
-          <div class="person">
-            <div class="avatar" aria-hidden="true">C</div>
-            <div>
-              <h3>Cristiane Hervas</h3>
+              <h3>Christiane Hervas</h3>
               <div class="crp">Psicóloga · CRP 06/236340</div>
-              <p>Abordagem psicanalítica.</p>
+              <p>Abordagem psicanalítica. Gestão de RH, foco em saúde mental no trabalho, abordagem psicanalítica e MBA em Gestão de PessoasGestão de RH, foco em saúde mental no trabalho, abordagem psicanalítica e MBA em Gestão de Pessoas</p>
             </div>
           </div>
           <div class="person">
-            <div class="avatar" aria-hidden="true">J</div>
+            <div class="avatar">
+              <img src="assets/fotos/Juliana.jpg" alt="Foto de Juliana Barcellos">
+            </div>
             <div>
               <h3>Juliana Barcellos</h3>
               <div class="crp">Psicóloga · CRP 06/236415</div>
-              <p>Abordagem psicanalítica.</p>
+              <p>Atua com atendimento psicológico de adultos, ansiedade, relacionamentos, conflitos emocionais, autoconhecimento e situações de violência e abuso. Abordagem Psicanalítica. Pós-graduanda em Neuropsicologia, com formação complementar em Manejo Clínico da Violência Sexual.</p>
             </div>
           </div>
           <div class="person">
-            <div class="avatar" aria-hidden="true">K</div>
+            <div class="avatar">
+            <img src="assets/fotos/Kelliane.jpg" alt="Foto de Kelliane Oliveira"></div>
             <div>
               <h3>Kelliane Oliveira</h3>
               <div class="crp">Psicóloga · CRP 06/154438</div>
-              <p>Abordagem psicanalítica.</p>
+              <p>Especialidade em Psicologia Clínica, com abordagem psicanalítica e foco em identidade feminina, autoestima, relacionamentos, limites e distanciamento do próprio desejo</p>
             </div>
           </div>
           <div class="person">
-            <div class="avatar" aria-hidden="true">R</div>
+            <div class="avatar">
+              <img src="assets/fotos/Raíssa.jpg" alt="Foto de Raissa Santos">
+            </div>
             <div>
               <h3>Raissa Santos</h3>
               <div class="crp">Psicóloga · CRP 06/201495</div>
-              <p>Terapia cognitivo-comportamental (TCC).</p>
+              <p>Especialidade e abordagem em Terapia Cognitivo-Comportamental, com pós-graduação e especialização em ABA.</p>
             </div>
           </div>
           <div class="person">
-            <div class="avatar" aria-hidden="true">R</div>
+            <div class="avatar">
+              <img src="assets/fotos/Renata.jpg" alt="Foto de Renata Rebaldoni"></div>
             <div>
               <h3>Renata Rebaldoni</h3>
               <div class="crp">Psicóloga · CRP 06/118444</div>
-              <p>Abordagem fenomenológica.</p>
+              <p>Especialidades em Psicologia Clínica, Psicologia Social e Psico-oncologia. Abordagem Humanista-Existencial. Especializações em Psicologia Social e Psicopedagogia, com formação em Psicologia Clínica e Neuropsicologia em andamento.</p>
             </div>
           </div>
           <div class="person">
-            <div class="avatar" aria-hidden="true">V</div>
+            <div class="avatar">
+              <img src="assets/fotos/Vanusa.jpg" alt="Foto de Vanusa Nakasone">
+            </div>
             <div>
               <h3>Vanusa Nakasone</h3>
               <div class="crp">Psicóloga · CRP 06/233056</div>
-              <p>Terapia cognitivo-comportamental (TCC).</p>
+              <p>Atua com psicoterapia, acolhimento psicológico e saúde mental, pela abordagem da Terapia Cognitivo-Comportamental (TCC). Pós-graduação em Neuropsicologia, mentoria em TCC e estudos em Psicopatologia e Transtornos de Personalidade.</p>
             </div>
+          </div>
+          </div>
+        </div>
+        <div class="team-group">
+          <h3 class="team-group-title">Profissionais administrativos</h3>
+          <div class="team">
+          <div class="person">
+            <div class="avatar">
+              <img src="assets/fotos/Tatiana.jpg" alt="Foto de Tatiana Ferreira">
+            </div>
+            <div>
+              <h3>Tatiana Ferreira</h3>
+              <p>Fundadora do NAPPA. Atua na gestão, organização e desenvolvimento das frentes de cuidado e formação do núcleo.</p>
+            </div>
+          </div>
+          <div class="person">
+            <div class="avatar">
+              <img src="assets/fotos/Christiane.jpg" alt="Foto de Christiane Hervas">
+            </div>
+            <div>
+              <h3>Christiane Hervas</h3>
+              <p>Atua na gestão de RH, com foco em saúde mental no trabalho, gestão de pessoas e apoio aos processos administrativos do núcleo.</p>
+            </div>
+          </div>
+          <div class="person">
+            <div class="avatar">
+              <img src="assets/fotos/Sarah.jpg" alt="Foto de Sarah Sobrinho">
+            </div>
+            <div>
+              <h3>Sarah Sobrinho</h3>
+              <p>Formação: Auxiliar Administrativo, Vendas e Atendimento. Atua com gestão administrativa, organização de processos, suporte financeiro e atendimento ao público, com foco organizacional e suporte à equipe.</p>
+            </div>
+          </div>
           </div>
         </div>
       </div>
