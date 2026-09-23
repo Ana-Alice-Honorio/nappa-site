@@ -80,6 +80,7 @@ img{max-width:100%}
 .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:68px;flex-wrap:wrap}
 .brand{font-family:"Fraunces",Georgia,serif;font-size:1.02rem;line-height:1.25;letter-spacing:.01em;text-decoration:none;max-width:22ch}
 .brand span{color:var(--brass)}
+.menu-toggle{display:none}
 .nav{display:flex;gap:1.35rem;flex-wrap:wrap}
 .nav a{font-size:.95rem;text-decoration:none;color:var(--ink-soft);padding:.25rem 0;border-bottom:1px solid transparent}
 .nav a:hover,.nav a:focus-visible{color:var(--ink);border-bottom-color:var(--brass)}
@@ -231,8 +232,17 @@ footer p{margin:0 0 .35rem}
   .wrap{padding-left:1rem;padding-right:1rem}
   .topbar .wrap{padding-top:.65rem;padding-bottom:.65rem}
   .brand{font-size:.96rem}
-  .nav{width:100%;gap:.65rem .95rem;overflow-x:auto;flex-wrap:nowrap;padding-bottom:.15rem}
-  .nav a{font-size:.88rem;white-space:nowrap}
+  .menu-toggle{display:grid;place-items:center;width:2.75rem;height:2.75rem;padding:0;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer}
+  .menu-toggle span,.menu-toggle span::before,.menu-toggle span::after{display:block;width:1.2rem;height:2px;background:currentColor;transition:transform .2s ease,opacity .2s ease;content:""}
+  .menu-toggle span{position:relative}
+  .menu-toggle span::before{position:absolute;top:-.4rem}
+  .menu-toggle span::after{position:absolute;top:.4rem}
+  .menu-toggle[aria-expanded="true"] span{background:transparent}
+  .menu-toggle[aria-expanded="true"] span::before{transform:translateY(.4rem) rotate(45deg)}
+  .menu-toggle[aria-expanded="true"] span::after{transform:translateY(-.4rem) rotate(-45deg)}
+  .nav{display:none;width:100%;padding:.7rem 0 .2rem;gap:.2rem;flex-direction:column}
+  .nav.is-open{display:flex}
+  .nav a{font-size:.95rem;white-space:normal;padding:.55rem 0}
   .hero{padding-top:2rem;padding-bottom:2.5rem}
   .hero-grid{gap:1.25rem}
   .hero-figure{max-width:170px;margin-bottom:.35rem}
@@ -266,7 +276,10 @@ footer p{margin:0 0 .35rem}
 <header class="topbar">
   <div class="wrap">
     <a class="brand" href="#inicio">Núcleo de Atendimento<br>e Pesquisa em <span>Psicologia</span></a>
-    <nav class="nav" aria-label="Seções do site">
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu">
+      <span aria-hidden="true"></span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Seções do site">
       <a href="#sobre">Sobre</a>
       <a href="#servicos">Serviços</a>
       <a href="#materiais">Materiais</a>
@@ -470,10 +483,10 @@ footer p{margin:0 0 .35rem}
           </div>
           <div class="person">
             <div class="avatar">
-              <img src="assets/fotos/Christiane.jpg" alt="Foto de Christiane Hervas">
+              <img src="assets/fotos/Cristiane.jpg" alt="Foto de Christiane Hervas">
             </div>
             <div>
-              <h3>Christiane Hervas</h3>
+              <h3>Cristiane Hervas</h3>
               <p>Atua na gestão de RH, com foco em saúde mental no trabalho, gestão de pessoas e apoio aos processos administrativos do núcleo.</p>
             </div>
           </div>
@@ -530,5 +543,24 @@ footer p{margin:0 0 .35rem}
   </div>
 </footer>
 
+<script>
+  const menuToggle = document.querySelector('.menu-toggle');
+  const siteNav = document.querySelector('#site-nav');
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = menuToggle.getAttribute('aria-expanded') === 'true';
+    menuToggle.setAttribute('aria-expanded', String(!isOpen));
+    menuToggle.setAttribute('aria-label', isOpen ? 'Abrir menu' : 'Fechar menu');
+    siteNav.classList.toggle('is-open', !isOpen);
+  });
+
+  siteNav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Abrir menu');
+      siteNav.classList.remove('is-open');
+    });
+  });
+</script>
 </body>
 </html>
